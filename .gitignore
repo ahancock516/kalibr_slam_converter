@@ -1,0 +1,41 @@
+# === System & Windows Junk ===
+[Dd]s.[Ss]tore
+Thumbs.db
+*.Zone.Identifier
+.vscode/
+.idea/
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+build/
+dist/
+*.egg-info/
+
+# === Large Data (CRITICAL) ===
+# This blocks your 1.8GB bag file
+*.bag
+*.bag.active
+/ros_slam_kalibr/data/*.bag
+
+# === Kalibr/SLAM Calibration Outputs ===
+# Ignore PDF reports and text results (Keep the repo clean)
+report-*.pdf
+results-*.txt
+*-results.txt
+*-results-*.txt
+
+# === Local User Data / Logs ===
+*.log
+/ros_slam_kalibr/kalibr/
+/kalibr_converter/vins_config/
+/kalibr_converter/orb_config/
+
+# === Exceptions (Uncomment if you want to force-include specific examples) ===
+# !/kalibr_converter/data/example_imu_cam-imu.yaml
+# !/kalibr_converter/data/example_imu_cam-camchain-imucam.yaml

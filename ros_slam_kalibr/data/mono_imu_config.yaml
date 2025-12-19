@@ -1,0 +1,75 @@
+%YAML:1.0
+
+imu: 1
+num_of_cam: 1
+
+#common parameters
+imu_topic: "/mavros/imu/data_raw"
+image_topic: "/mono_camera/image_raw"
+output_path: "/data/vins_output/"
+
+
+#camera calibration 
+model_type: PINHOLE
+camera_name: camera
+
+image_width: 640
+image_height: 480
+
+distortion_parameters:
+   k1: -0.04477364638622963
+   k2: 0.05215937066250272
+   p1: 0.00010674030433714083
+   p2: 0.00020192851520704948
+projection_parameters:
+   fx: 557.8161919015545
+   fy: 555.9753196049822
+   cx: 315.3894152193359
+   cy: 229.3646991133702
+
+estimate_extrinsic: 1
+extrinsicRotation: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: f
+
+   data: [-0.01558074, -0.00541215, -0.99986397, 0.99969709, 0.01896941, -0.01568082, 0.0190517, -0.99980542, 0.00511495]
+
+extrinsicTranslation: !!opencv-matrix
+   rows: 3
+   cols: 1
+   dt: f
+   data: [-0.0000151, -0.00011595, -0.00000615]
+
+max_cnt: 150
+min_dist: 30
+freq: 10
+F_threshold: 1.0
+show_track: 1
+equalize: 1
+fisheye: 0
+
+max_solver_time: 0.04
+max_num_iterations: 8
+keyframe_parallax: 10.0
+
+acc_n: 0.0021213203435596424
+gyr_n: 0.001414213562373095
+acc_w: 0.00025
+gyr_w: 2.26e-05
+g_norm: 9.81007
+
+loop_closure: 1
+load_previous_pose_graph: 0
+fast_relocalization: 0
+pose_graph_save_path: "/data/vins_output/pose_graph/"
+
+estimate_td: 0
+td: 0.0
+
+rolling_shutter: 0
+rolling_shutter_tr: 0
+
+save_image: 1
+visualize_imu_forward: 0
+visualize_camera_size: 0.4

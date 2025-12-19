@@ -1,0 +1,40 @@
+%YAML:1.0
+# ===================================================================================
+# VINS-Fusion Monocular-Inertial Configuration File
+# ===================================================================================
+imu: 1
+num_of_cam: 1
+imu_topic: /mavros/imu/data_raw
+image0_topic: /mono_camera/image_raw
+cam0_calib: camera_config.yaml
+image_width: 640
+image_height: 480
+estimate_extrinsic: 0
+body_T_cam0: !!opencv-matrix
+  rows: 4
+  cols: 4
+  dt: d
+  data: [ 0.02573808, -0.07571218,  0.99679748,  0.14593651,
+          -0.99897322,  0.03524073,  0.02847099,  0.01423019,
+          -0.03728347, -0.99650678, -0.07472741,  0.00303243,
+           0.00000000,  0.00000000,  0.00000000,  1.00000000 ]
+multiple_thread: 1
+max_cnt: 150
+min_dist: 30
+freq: 10
+F_threshold: 1.0
+show_track: 1
+flow_back: 1
+max_solver_time: 0.04
+max_num_iterations: 8
+keyframe_parallax: 10.0
+acc_n: 0.0020636020004597836
+gyr_n: 0.00015399338188738134
+acc_w: 3.520072242553238e-05
+gyr_w: 1.092638250006621e-06
+g_norm: 9.81
+estimate_td: 0
+td: -0.008064433744960802
+load_previous_pose_graph: 0
+pose_graph_save_path: /root/output/pose_graph/
+save_image: 1

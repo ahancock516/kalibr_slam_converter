@@ -1,0 +1,5 @@
+target_type: 'aprilgrid'
+tagCols: 6               # Number of columns in the grid
+tagRows: 6               # Number of rows in the grid
+tagSize: 0.0208            # Size of a single tag's black border, in meters
+tagSpacing: 0.3          # Ratio of space between tags to tagSize

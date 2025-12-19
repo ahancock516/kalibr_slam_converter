@@ -1,0 +1,19 @@
+services:
+  kalibr_converter:
+    build: .
+    image: kalibr-converter
+    volumes:
+      - ./data:/data
+      - ./scripts:/scripts
+
+  # This service runs the ORB-SLAM3 conversion
+  convert-to-orb:
+    extends:
+      service: kalibr_converter
+    command: /scripts/convert-to-orb.sh
+
+  # This new service runs the VINS-Fusion conversion
+  convert-to-vins:
+    extends:
+      service: kalibr_converter
+    command: /scripts/convert-to-vins.sh

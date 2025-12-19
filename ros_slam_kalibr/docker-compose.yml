@@ -1,0 +1,20 @@
+services:
+  kalibr:
+    build:
+      context: ./kalibr
+      dockerfile: Dockerfile_ros1_20_04
+    container_name: kalibr
+    command: bash -c "source /catkin_ws/devel/setup.bash && bash"
+    network_mode: "host" 
+    environment:
+      # CRITICAL: Point this to the ROS Master running on the Pi
+      - ROS_MASTER_URI=http://192.168.2.5:11311 # Update this to the IP address of the RPi running ROS.
+      - ROS_IP=192.168.2.6 # Set to the IP of the PC running the Kalibr container.
+      # CRITICAL: For GUI forwarding
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      # Mount a local data folder for bags and results
+      - /mnt/c/users/hanco/onedrive/desktop:/data
+      - ./scripts:/scripts
