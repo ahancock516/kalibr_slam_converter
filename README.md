@@ -82,16 +82,6 @@ rosrun kalibr kalibr_calibrate_imu_camera \
 ---
 ## Step 4: Generate SLAM Configuration Files
 
-Launch the kalibr_converter container
-```bash
-docker compose down
-docker compose run --rm kalibr_converter
-```
-The ros environment should launch and place you in the /scripts directory.
-
-```bash
-
-```
 The calibration results from `camchain-imucam.yaml` are used to generate configuration files for VINS-Fusion and ORB-SLAM3.
 
 > ⚠️ **Important:** See `config/calibration_results.yaml` for example formatting of the resulting matrices used in the SLAM nodes.
@@ -103,3 +93,22 @@ The calibration results from `camchain-imucam.yaml` are used to generate configu
 - IMU noise parameters
 
 Refer to your SLAM framework's documentation for specific configuration file format requirements.
+
+### Launch the kalibr_converter container
+```bash
+docker compose down
+docker compose run --rm kalibr_converter
+```
+The ros environment should launch and place you in the /scripts directory.
+
+### Create the VINS-Fusion configuration files:
+```bash
+./convert-to-vins.sh kalibr_mono_imu_capture-camchain-imucam.yaml kalibr_imu.yaml
+```
+The file is located in /kalibr_converter/data/vins_config
+
+### Create the ORB-SLAM3 configuration file:
+```bash
+./convert-to-orb.sh kalibr_mono_imu_capture-camchain-imucam.yaml kalibr_imu.yaml
+```
+The file is located in /kalibr_converter/data/orb_config
